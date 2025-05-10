@@ -146,14 +146,3 @@ Content-Type: application/json
 ```http
 GET /payment/verify/182441b72f7490efc066a14cbb643b17e30d
 ```
-
----
-
-### 📬 Contact & Handover
-
-If needed, provide:
-
-- `SQL` dump
-- Server credentials (if hosted)
-- Source code (Git repo, zip file, etc.)
-- Deployment walkthrough call (optional)
