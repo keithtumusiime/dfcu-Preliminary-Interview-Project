@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "6a010e6e-976c-48a2-b97c-f6e8055dbdbd",
+		"name": "dfcu preliminary api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15114051",
+		"_collection_link": "https://ktithtech.postman.co/workspace/keith~f9c52c34-be60-425a-84d4-b086b35fe176/collection/15114051-6a010e6e-976c-48a2-b97c-f6e8055dbdbd?action=share&source=collection_link&creator=15114051"
+	},
+	"item": [
+		{
+			"name": "initiate payment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payer\":\"1234567890\",\r\n    \"payee\":\"1234567892\",\r\n    \"amount\":25000,\r\n    \"currency\":\"UGX\",\r\n    \"payer_reference\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/dfcu/api/payment/initiate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"dfcu",
+						"api",
+						"payment",
+						"initiate"
+					]
+				},
+				"description": "StartFragmentAccepts payment requests with the following parameters:  \n**i.Payer:** The sending party’s numeric 10-digit account number.  \n**ii. Payee:** The recipient’s numeric 10-digit account number.  \n**iii. Amount:** The payment amount.  \n**iv. Currency:** The payment currency (ISO code)  \n**v. Payer Reference:** An optional narration provided by the sending party.  \n Returns a response with a **status code** and body with two parameters: **unique  \ntransaction reference** and **response message**EndFragment"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payer\":\"1234567890\",\r\n    \"payee\":\"1234567891\",\r\n    \"amount\":3000,\r\n    \"currency\":\"UGX\",\r\n    \"payer_reference\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/dfcu/api/payment/initiate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"dfcu",
+								"api",
+								"payment",
+								"initiate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 08:42:58 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Content-Length",
+							"value": "148"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"message\": \"Transaction successfully processed\",\n    \"transaction_reference\": \"e148e113c2bbe1d15dd46e2b56812b6b4b6c\"\n}"
+				},
+				{
+					"name": "error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payer\":\"1234567890\",\r\n    \"payee\":\"1234567891\",\r\n    \"amount\":0,\r\n    \"currency\":\"UGX\",\r\n    \"payer_reference\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/dfcu/api/payment/initiate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"dfcu",
+								"api",
+								"payment",
+								"initiate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 08:44:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Content-Length",
+							"value": "59"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"message\": \"Invalid amount\"\n}"
+				}
+			]
+		},
+		{
+			"name": "status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/dfcu/api/payment/verify/1c42de18fbea265e6b69469f50d1e74e48c1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"dfcu",
+						"api",
+						"payment",
+						"verify",
+						"1c42de18fbea265e6b69469f50d1e74e48c1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/dfcu/api/payment/verify/e148e113c2bbe1d15dd46e2b56812b6b4b6c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"dfcu",
+								"api",
+								"payment",
+								"verify",
+								"e148e113c2bbe1d15dd46e2b56812b6b4b6c"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 08:51:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Content-Length",
+							"value": "250"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"status\": \"SUCCESSFUL\",\n    \"data\": {\n        \"payer_account\": \"1234567890\",\n        \"payee_account\": \"1234567891\",\n        \"amount\": \"3000.00\",\n        \"currency\": \"UGX\",\n        \"payer_reference\": \"\",\n        \"transaction_reference\": \"e148e113c2bbe1d15dd46e2b56812b6b4b6c\",\n        \"status\": \"SUCCESSFUL\"\n    }\n}"
+				},
+				{
+					"name": "failed",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/dfcu/api/payment/verify/e148e113c2bbe1d15dd46e2b56812b6b4b61",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"dfcu",
+								"api",
+								"payment",
+								"verify",
+								"e148e113c2bbe1d15dd46e2b56812b6b4b61"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 08:56:28 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 404,\n    \"message\": \"Transaction not found\"\n}"
+				}
+			]
+		}
+	]
+}

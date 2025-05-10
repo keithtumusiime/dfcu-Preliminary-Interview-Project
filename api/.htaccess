@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Rewrite rule for Payment Initiation API
+RewriteRule ^api/payment/initiate$ initiate_payment.php [L]
+
+# Rewrite rule for Payment Status Check API
+RewriteRule ^api/payment/verify/([a-zA-Z0-9]+)$ check_payment_status.php?transaction_reference=$1 [L]
+
